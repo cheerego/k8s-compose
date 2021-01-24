@@ -12,12 +12,13 @@ type KCompose struct {
 }
 
 func NewK() *KCompose {
+	c := compose.NewC()
 	return &KCompose{
-		Compose: compose.NewC(),
+		Compose:     c,
+		RootCommand: cmd.NewRootCommand(c),
 	}
 }
 
-func (k KCompose) Run() {
-	k.RootCommand = cmd.NewRootCommand(k.Compose)
-	k.RootCommand.Execute()
+func (k KCompose) Run() error {
+	return k.RootCommand.Execute()
 }

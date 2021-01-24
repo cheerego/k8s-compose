@@ -5,10 +5,12 @@ type Service struct {
 }
 
 type Compose struct {
-	Envs     *map[string]string
-	Services *[]Service
+	Envs      *map[string]string
+	Services  *[]Service
+	Workspace string
 }
 
 func NewC() *Compose {
-	return &Compose{}
+	c := &Compose{}
+	return c
 }
